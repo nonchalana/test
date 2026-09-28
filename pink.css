@@ -194,14 +194,23 @@ h3 {
   grid-gap: 3px;
   grid-template-columns: auto 1fr;
   grid-template-areas:
+	"top top top top"
     "nav, mid, mid, mid";
   justify-content: center;
+}
+
+.top{
+  grid-row-start: 1;
+  grid-area: top;
+  background: url("pinkstripes.png");
+  width: 100%;
 }
 
 .mid {
   background: #fffde8;
   height: 100%;
   width: 650px;
+  grid-row-start: 2;
   grid-area: "mid";
   border: solid 1px;
   border-color: #763231;
@@ -215,6 +224,7 @@ h3 {
   background: #fffde8;
   height: 100%;
   width: 150px;
+  grid-row-start: 2;
   grid-area: "nav";
   border: solid 1px;
   border-color: #763231;
