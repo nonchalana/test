@@ -257,7 +257,7 @@ h3 {
   background: #fffde8;
   width: 150px;
   height: 50px;
-  grid-area: "abt";
+  grid-area: "nav";
   grid-row-start: 1;
   border: solid 1px;
   border-color: #763231;
