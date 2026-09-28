@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+  <head>
+    <title>rokkukka</title>
+    <link rel="stylesheet" href="pink.css" />
+    <link rel="icon" type="image/x-icon" href="skull.ico" />
+  </head>
+  <body>
+    <script type="text/javascript">
+// <![CDATA[
+var sparks=75; // how many sparks per clicksplosion
+var speed=33; // how fast - smaller is faster
+var bangs=5; // how many can be launched simultaneously (note that using too many can slow the script down)
+var colours=new Array('#763231', '#b4878c', '#ffdeed', '#763231', '#b4878c', '#ffdeed', '#ffdeed'); 
+//                     brown    light brown     pink   brown  light brown    pink  pink
+
+/****************************
+*   Clicksplosion Effect    *
+*(c)2012-3 mf2fm web-design *
+*  http://www.mf2fm.com/rv  *
+* DON'T EDIT BELOW THIS BOX *
+****************************/
+var intensity=new Array();
+var Xpos=new Array();
+var Ypos=new Array();
+var dX=new Array();
+var dY=new Array();
+var stars=new Array();
+var decay=new Array();
+var timers=new Array();
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var count=0;
+
+function addLoadEvent(funky) {
+  var oldonload=window.onload;
+  if (typeof(oldonload)!='function') window.onload=funky;
+  else window.onload=function() {
+    if (oldonload) oldonload();
+    funky();
+  }
+}
+
+addLoadEvent(clicksplode);
+
+function clicksplode() { if (document.getElementById) {
+  var i, j;
+  window.onscroll=set_scroll;
+  window.onresize=set_width;
+  document.onclick=eksplode;
+  set_width();
+  set_scroll();
+  for (i=0; i<bangs; i++) for (j=sparks*i; j<sparks+sparks*i; j++) {
+    stars[j]=createDiv('*', 13);
+    document.body.appendChild(stars[j]);
+  }
+}}
+
+function createDiv(char, size) {
+  var div, sty;
+  div=document.createElement('div');
+  sty=div.style;
+  sty.font=size+'px monospace';
+  sty.position='absolute';
+  sty.backgroundColor='transparent';
+  sty.visibility='hidden';
+  sty.zIndex='101';
+  div.appendChild(document.createTextNode(char));
+  return (div);
+}
+
+function bang(N) {
+  var i, Z, A=0;
+  for (i=sparks*N; i<sparks*(N+1); i++) { 
+    if (decay[i]) {
+      Z=stars[i].style;
+      Xpos[i]+=dX[i];
+      Ypos[i]+=(dY[i]+=1.25/intensity[N]);
+      if (Xpos[i]>=swide || Xpos[i]<0 || Ypos[i]>=shigh+sdown || Ypos[i]<0) decay[i]=1;
+	  else {
+        Z.left=Xpos[i]+'px';
+        Z.top=Ypos[i]+'px';
+	  }
+      if (decay[i]==15) Z.fontSize='7px';
+      else if (decay[i]==7) Z.fontSize='2px';
+      else if (decay[i]==1) Z.visibility='hidden';
+	  decay[i]--;
+	}
+	else A++;
+  }
+  if (A!=sparks) timers[N]=setTimeout('bang('+N+')', speed);
+}
+
+function eksplode(e) { 
+  var x, y, i, M, Z, N;
+  set_scroll();
+  y=(e)?e.pageY:event.y+sdown;
+  x=(e)?e.pageX:event.x+sleft;
+  N=++count%bangs;
+  M=Math.floor(Math.random()*3*colours.length);
+  intensity[N]=5+Math.random()*4;
+  for (i=N*sparks; i<(N+1)*sparks; i++) {
+    Xpos[i]=x;
+    Ypos[i]=y-5;
+    dY[i]=(Math.random()-0.5)*intensity[N];
+    dX[i]=(Math.random()-0.5)*(intensity[N]-Math.abs(dY[i]))*1.25;
+    decay[i]=16+Math.floor(Math.random()*16);
+    Z=stars[i].style;
+    if (M<colours.length) Z.color=colours[i%2?count%colours.length:M];
+    else if (M<2*colours.length) Z.color=colours[count%colours.length];
+    else Z.color=colours[i%colours.length];
+    Z.fontSize='13px';
+    Z.visibility='visible';
+  }
+  clearTimeout(timers[N]);
+  bang(N);
+} 
+
+function set_width() {
+  var sw_min=999999;
+  var sh_min=999999;
+  if (document.documentElement && document.documentElement.clientWidth) {
+    if (document.documentElement.clientWidth>0) sw_min=document.documentElement.clientWidth;
+    if (document.documentElement.clientHeight>0) sh_min=document.documentElement.clientHeight;
+  }
+  if (typeof(self.innerWidth)=='number' && self.innerWidth) {
+    if (self.innerWidth>0 && self.innerWidth<sw_min) sw_min=self.innerWidth;
+    if (self.innerHeight>0 && self.innerHeight<sh_min) sh_min=self.innerHeight;
+  }
+  if (document.body.clientWidth) {
+    if (document.body.clientWidth>0 && document.body.clientWidth<sw_min) sw_min=document.body.clientWidth;
+    if (document.body.clientHeight>0 && document.body.clientHeight<sh_min) sh_min=document.body.clientHeight;
+  }
+  if (sw_min==999999 || sh_min==999999) {
+    sw_min=800;
+    sh_min=600;
+  }
+  swide=sw_min-7;
+  shigh=sh_min-7;
+}
+
+function set_scroll() {
+  if (typeof(self.pageYOffset)=='number') {
+    sdown=self.pageYOffset;
+    sleft=self.pageXOffset;
+  }
+  else if (document.body && (document.body.scrollTop || document.body.scrollLeft)) {
+    sdown=document.body.scrollTop;
+    sleft=document.body.scrollLeft;
+  }
+  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+    sleft=document.documentElement.scrollLeft;
+    sdown=document.documentElement.scrollTop;
+  }
+  else {
+    sdown=0;
+    sleft=0;
+  }
+}
+// ]]>
+</script>
+    <script>NekoType="lucy"</script>
+    <h1 id=nl><script src="https://webneko.net/n20171213.js"></script>
+    <a href="https://webneko.net">Neko</a></h1>
+    <div id="statuscafe"><div id="statuscafe-username"></div><div id="statuscafe-content">
+    </div></div><script src="https://status.cafe/current-status.js?name=sillly" defer></script>
+    <img class="melosticky" src="kickmelo.gif">
+    <a class="favsites" href="fav.html"><div class="button">fav sites !</div></a>
+    <a class="styles" href="styles.html"><div class="button">button wall</div></a>
+    <a class="interests" href="interests.html"><div class="button">interests</div></a>
+    <!-- Remember to also copy the code in the CSS area! -->
+<div class="snowflakes">
+  <!-- add your 'snowflake' images below - you can add more or less if needed -->
+  <div class="snowflake"><img src="snail.gif" style="width:20px;" /></div>
+  <div class="snowflake"><img src="snail.gif" style="width:20px;" /></div>
+  <div class="snowflake"><img src="snail.gif" style="width:20px;" /></div>
+  <div class="snowflake"><img src="snail.gif" style="width:20px;" /></div>
+  <div class="snowflake"><img src="snail.gif" style="width:20px;" /></div>
+  <div class="snowflake"><img src="snail.gif" style="width:20px;" /></div>
+  <div class="snowflake"><img src="snail.gif" style="width:20px;" /></div>
+  <div class="snowflake"><img src="snail.gif" style="width:20px;" /></div>
+  <div class="snowflake"><img src="snail.gif" style="width:20px;" /></div>
+  <div class="snowflake"><img src="snail.gif" style="width:20px;" /></div>
+</div>
+    <center>
+    <br>
+    <br>
+    <br>
+      <div class="c1">
+        <div>
+          <div class="home"><br>
+            <a class="tab" href="index.html"><div class="button">home</div></a>
+          </div>
+          <div class="psych"><br>
+            <a class="tab" href="guestbook.html"><div class="button">guestbook</div></a>
+          </div>
+          <div class="ento"><br>
+            <a class="tab" href="entomology.html"><div class="button">entomology</div></a>
+          </div>
+          <div class="abt"><br>
+            <a class="tab" href="blog.html"><div class="button">blog</div></a>
+          </div>
+        </div>
+        <div class="mid">
+          <div class="inlineheader">
+            <img class="div" src="angelwingdiv.gif" />
+            <h1>home</h1>
+            <img class="div" src="angelwingdiv.gif" />
+          </div>
+          <div class="inlineheader">
+          <div class="results" style="width: 200px;background-color: #fff;color: #000;display: block;padding: 10px;border: 0px solid;border-color:white;margin: 0 auto;font-family: 'times';font-size: '15pt';">
+      <p style="margin: 0">This page is protected by a</p>
+      <h1 class="title" style="margin: 0">RABBIT</h1>
+      <img class="image" style="max-width: 160px;" alt="RABBIT" src="bnuy.png">
+      <p class="description">Like deer, a female rabbit is called a 'doe' and a male rabbit is called a 'buck'</p>
+      <small>
+        <a href="https://hekate.neocities.org">Want your own? Visit hekate.neocities.org!</a>
+      </small>
+    </div>
+          <div class="text01">
+            <p>getting back on after a while !! site is under construction rn so theres a lot that needs to be fixed so pls bear with me...</p>
+          </div> <br>
+          </div>
+        </div>
+      </div>
+      <img style="box-shadow: 2px 2px 10px #094C54;" src="rokkukka.jpg"> <br>
+      <textarea><a href="https://rokkukka.neocities.org/" target="_blank"><img src="https://rokkukka.neocities.org/rokkukka.jpg"></a></textarea>
+		<div class="buttonz">
+			<img src="https://wilardo.crd.co/assets/images/gallery08/5836179e.png?v=6a9f8b82">
+			<img src="https://wilardo.crd.co/assets/images/gallery08/cab21195.png?v=6a9f8b82">
+			<img src="https://wilardo.crd.co/assets/images/gallery08/593283af.png?v=6a9f8b82">
+			<img src="https://wilardo.crd.co/assets/images/gallery08/096281b3.png?v=6a9f8b82">
+			<img src="https://wilardo.crd.co/assets/images/gallery08/d00fdab2.png?v=6a9f8b82">
+			<img src="https://wilardo.crd.co/assets/images/gallery08/8e50f259.png?v=6a9f8b82">
+			<img src="https://wilardo.crd.co/assets/images/gallery13/5bdd411a.png?v=6a9f8b82">
+			<img src="https://wilardo.crd.co/assets/images/gallery13/e57eda8d.gif?v=6a9f8b82">
+			<br>
+			<img src="https://wilardo.crd.co/assets/images/gallery08/a7a42371.gif?v=6a9f8b82">
+			<img src="https://wilardo.crd.co/assets/images/gallery08/b92d57f5.gif?v=6a9f8b82">
+			<img src="https://wilardo.crd.co/assets/images/gallery11/c5cdcc2f.gif?v=6a9f8b82">
+			<img src="https://wilardo.crd.co/assets/images/gallery13/8e315dcb.gif?v=6a9f8b82">
+			<img src="">
+		</div>
+    </center>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
