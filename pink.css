@@ -109,6 +109,10 @@ body::-webkit-scrollbar-corner {
     height: 100%;
 	position: relative;
 	display: block;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	unicode-bidi: isolate;
 }
 
 .wrap h1{
