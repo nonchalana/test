@@ -218,6 +218,7 @@ h3 {
   border: solid 1px;
   border-color: #763231;
   overflow: scroll;
+  overflow-x: hidden;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px 0px 10px 10px;
   border-radius: 10px 10px 10px 0px;
