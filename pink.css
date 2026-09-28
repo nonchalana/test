@@ -104,6 +104,16 @@ body::-webkit-scrollbar-corner {
   display: inline-flex;
 }
 
+.rokkukka{
+  position: absolute; 
+  bottom: 0;
+  font-family: spirit;
+  font-size: 3.5em;
+  color: rgb(117, 71, 40);
+  text-shadow: 3px 3px 0 white, -3px -3px 0 white, 3px -3px 0 white, -3px 3px 0 white;
+  filter: drop-shadow(1px 1px 0px rgba(128, 128, 128, 0.322));
+}
+
 b {
   font-size: 12px;
   color: #763231;
