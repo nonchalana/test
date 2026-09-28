@@ -119,6 +119,7 @@ body::-webkit-scrollbar-corner {
 .wrap h1{
   position: absolute; 
   bottom: -10px;
+  left: 5px;
   font-family: spirit;
   font-size: 30px;
   color: rgb(117, 71, 40);
