@@ -188,7 +188,6 @@ h3 {
   font-size: 12px;
   border: solid 7px;
   border-image: url("biscuitborder.png") 7 fill round;
-  height: 410px;
   width: 900px;
   padding: 8px;
   display: grid;
@@ -201,7 +200,6 @@ h3 {
 .mid {
   background: #fffde8;
   width: 650px;
-  height: 350px;
   grid-area: "mid";
   border: solid 1px;
   border-color: #763231;
@@ -211,51 +209,9 @@ h3 {
   border-radius: 0px 0px 10px 10px;
 }
 
-.home {
-  background: #fffde8;
-  width: 150px;
-  height: 50px;
-  grid-area: "home";
-  grid-row-start: 1;
-  border: solid 1px;
-  border-color: #763231;
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 10px 10px 0px 0px;
-  border-radius: 10px 10px 0px 0px;
-  float: left;
-}
-
-.psych {
-  background: #fffde8;
-  width: 150px;
-  height: 50px;
-  grid-area: "psych";
-  grid-row-start: 1;
-  border: solid 1px;
-  border-color: #763231;
-  -webkit-border-radius: 10px 10px 0px 0px;
-  border-radius: 10px 10px 0px 0px;
-  float: left;
-}
-
-.ento {
-  background: #fffde8;
-  width: 150px;
-  height: 50px;
-  grid-area: "ento";
-  grid-row-start: 1;
-  border: solid 1px;
-  border-color: #763231;
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 10px 10px 0px 0px;
-  border-radius: 10px 10px 0px 0px;
-  float: left;
-}
-
 .nav {
   background: #fffde8;
   width: 150px;
-  height: 50px;
   grid-area: "nav";
   border: solid 1px;
   border-color: #763231;
