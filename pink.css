@@ -219,7 +219,7 @@ h3 {
   border-color: #763231;
   -moz-border-radius: 0px;
   -webkit-border-radius: 10px 10px 0px 0px;
-  border-radius: 10px 10px 10px 0px;
+  border-radius: 10px 10px 0px 10px;
   float: left;
 }
 
