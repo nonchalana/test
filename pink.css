@@ -201,7 +201,7 @@ h3 {
 
 .mid {
   background: #fffde8;
-  width: 606px;
+  width: 900px;
   height: 350px;
   grid-area: "mid";
   grid-row-start: 2;
