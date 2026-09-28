@@ -192,7 +192,7 @@ h3 {
   padding: 8px;
   display: grid;
   grid-gap: 3px;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr)
   grid-template-rows: repeat(2, 1fr);
   grid-template-areas:
 	"top, top, top, top"
@@ -202,7 +202,7 @@ h3 {
 
 .top{
   grid-row-start: 1;
-  grid-area: 1 / 1 / 2 / 3;
+  grid-area: 1 / 1 / 2 / 5;
   background: url("pinkstripes.png");
   width: 700px;
 }
@@ -213,7 +213,7 @@ h3 {
   width: 650px;
   grid-row-start: 2;
   grid-column-start: 2;
-  grid-area: 2 / 2 / 3 / 3;
+  grid-area: 2 / 2 / 3 / 5;
   border: solid 1px;
   border-color: #763231;
   overflow: auto;
