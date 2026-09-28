@@ -203,7 +203,7 @@ h3 {
 .top{
   grid-row-start: 1;
   grid-area: 1 / 1 / 2 / 5;
-  background: url("pinkstripes.png");
+  background: url("cupkaek.gif");
   height: 110px;
   width: 100%;
 }
