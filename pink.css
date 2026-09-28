@@ -204,7 +204,7 @@ h3 {
   grid-row-start: 1;
   grid-area: 1 / 1 / 2 / 5;
   background: url("pinkstripes.png");
-  height: 200px;
+  height: 150px;
   width: 100%;
 }
 
