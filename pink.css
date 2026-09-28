@@ -120,7 +120,7 @@ body::-webkit-scrollbar-corner {
   position: absolute; 
   bottom: 0;
   font-family: spirit;
-  font-size: 3.5em;
+  font-size: 3em;
   color: rgb(117, 71, 40);
   text-shadow: 3px 3px 0 white, -3px -3px 0 white, 3px -3px 0 white, -3px 3px 0 white;
   filter: drop-shadow(1px 1px 0px rgba(128, 128, 128, 0.322));
@@ -236,7 +236,7 @@ h3 {
 .top{
   grid-row-start: 1;
   grid-area: 1 / 1 / 2 / 5;
-  height: 200px;
+  height: 120px;
   width: 100%;
 }
 
