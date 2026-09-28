@@ -191,6 +191,7 @@ h3 {
   width: 900px;
   padding: 8px;
   display: grid;
+  grid-template-gap: 2px;
   grid-template-columns: auto 1fr;
   grid-template-areas:
     "nav, mid, mid, mid";
@@ -207,7 +208,7 @@ h3 {
   overflow: auto;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px 0px 10px 10px;
-  border-radius: 0px 0px 10px 0px;
+  border-radius: 10px 10px 10px 0px;
 }
 
 .nav {
