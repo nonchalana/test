@@ -194,8 +194,7 @@ h3 {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-areas:
-    "home, psych, ento, abt"
-    "mid, mid, mid, mid";
+    "nav, mid, mid, mid";
   justify-content: center;
 }
 
@@ -254,7 +253,7 @@ h3 {
   float: left;
 }
 
-.abt {
+.nav {
   background: #fffde8;
   width: 150px;
   height: 50px;
