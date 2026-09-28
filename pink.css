@@ -202,7 +202,7 @@ h3 {
 
 .top{
   grid-row-start: 1;
-  grid-area: "top";
+  grid-area: 1 / 1 / 2 / 3;
   background: url("pinkstripes.png");
   width: 700px;
 }
@@ -213,7 +213,7 @@ h3 {
   width: 650px;
   grid-row-start: 2;
   grid-column-start: 2;
-  grid-area: "mid";
+  grid-area: 2 / 2 / 3 / 3;
   border: solid 1px;
   border-color: #763231;
   overflow: auto;
@@ -228,7 +228,7 @@ h3 {
   width: 150px;
   grid-row-start: 2;
   grid-column-start: 1;
-  grid-area: "nav";
+  grid-area: 2 / 1 / 3 / 2;
   border: solid 1px;
   border-color: #763231;
   -moz-border-radius: 0px;
