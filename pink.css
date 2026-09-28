@@ -120,7 +120,7 @@ body::-webkit-scrollbar-corner {
   position: absolute; 
   bottom: 0;
   font-family: spirit;
-  font-size: 3em;
+  font-size: 33.6px;
   color: rgb(117, 71, 40);
   text-shadow: 3px 3px 0 white, -3px -3px 0 white, 3px -3px 0 white, -3px 3px 0 white;
   filter: drop-shadow(1px 1px 0px rgba(128, 128, 128, 0.322));
