@@ -189,7 +189,7 @@ h3 {
   border: solid 7px;
   border-image: url("biscuitborder.png") 7 fill round;
   height: 410px;
-  width: 606px;
+  width: 900px;
   padding: 8px;
   display: grid;
   grid-template-columns: auto 1fr;
