@@ -211,6 +211,7 @@ h3 {
 
 .nav {
   background: #fffde8;
+  height: 100%;
   width: 150px;
   grid-area: "nav";
   border: solid 1px;
